@@ -30,6 +30,18 @@
 					<span class="to-hide">Products <i class="fa fa-angle-right pull-right angle-icon"></i></span>
 				</a>	        	
 			</div>
+			<div data-toggle="tooltip" data-placement="right" title="Procurement">
+				<a href="{{route('procurements.index')}}">
+					<i class="fas fa-cart-plus"></i>
+					<span class="to-hide">Procurement <i class="fa fa-angle-right pull-right angle-icon"></i></span>
+				</a>	        	
+			</div>
+			<div data-toggle="tooltip" data-placement="right" title="Warehouse">
+				<a href="{{route('warehouse.index')}}">
+					<i class="fas fa-warehouse"></i>
+					<span class="to-hide">Warehouse <i class="fa fa-angle-right pull-right angle-icon"></i></span>
+				</a>	        	
+			</div>
 			<!-- <div data-toggle="tooltip" data-placement="right" title="Sales">
 				<a href="{{route('sales.index')}}">
 					<i class="fas fa-money-check-alt"></i>
@@ -37,12 +49,7 @@
 				</a>	        	
 			</div> -->
 			
-			<!-- <div data-toggle="tooltip" data-placement="right" title="Users">
-				<a href="users.php">
-					<i class="fas fa-user-friends"></i>
-					<span class="to-hide">Users <i class="fa fa-angle-right pull-right angle-icon"></i></span>
-				</a>	        	
-			</div> -->
+			
 			<div data-toggle="tooltip" data-placement="right" title="Profile">
 				<a href="{{route('profile.index')}}">
 					<i class="far fa-user"></i>

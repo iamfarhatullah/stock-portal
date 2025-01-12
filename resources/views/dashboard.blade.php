@@ -4,7 +4,7 @@
 @section('content')
 <div class="row">
     <div>
-        <p>Welcome to Stock App</p> 
+        <p>Welcome to Stockkkkk App</p> 
     </div>
 </div>
 @endsection
