@@ -26,7 +26,7 @@
 			</div>
 			<div data-toggle="tooltip" data-placement="right" title="Products">
 				<a href="{{route('products.index')}}">
-					<i class="fas fa-boxes"></i>
+					<i class="fas fa-cube"></i>
 					<span class="to-hide">Products <i class="fa fa-angle-right pull-right angle-icon"></i></span>
 				</a>	        	
 			</div>
@@ -38,7 +38,7 @@
 			</div>
 			<div data-toggle="tooltip" data-placement="right" title="Warehouse">
 				<a href="{{route('warehouse.index')}}">
-					<i class="fas fa-warehouse"></i>
+					<i class="fas fa-store-alt"></i>
 					<span class="to-hide">Warehouse <i class="fa fa-angle-right pull-right angle-icon"></i></span>
 				</a>	        	
 			</div>

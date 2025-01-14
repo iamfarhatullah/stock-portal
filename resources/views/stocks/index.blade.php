@@ -8,8 +8,12 @@
             <h3 class="box-title">Stock Records</h3>
         </div>
     </div>
-
-    <form method="GET" action="{{ route('stocks.index') }}" class="mb-4">
+    <div class="row">
+		<div class="col-md-4">
+			<input type="text" id="searchInput" onkeyup="searchStockTable()" class="form-field" placeholder="Search. . .">
+		</div>
+	</div>
+    <!-- <form method="GET" action="{{ route('stocks.index') }}" class="mb-4">
         <div class="row">
             <div class="col-md-4">
                 <label for="month">Select Month:</label>
@@ -19,14 +23,14 @@
                 <button type="submit" class="primary-btn">Filter</button>
             </div>
         </div>
-    </form>
+    </form> -->
 
     @if($stockRecords->isEmpty() && $products->isEmpty())
         <div class="alert alert-info text-center">No stock records and products found for the selected month.</div>
     @elseif($stockRecords->isEmpty())
         <div class="alert alert-info text-center">No stock records found for the selected month.</div>
     @else
-        <table id="search-table" class="table">
+        <table id="search-stock-table" class="table">
             <thead>
                 <tr>
                     <th style="width:5px">#</th>
@@ -52,7 +56,6 @@
                         $incomingTotalPrice = $incomingQuantity * $incomingPrice;
                         $outgoingTotalPrice = $outgoingQuantity * $outgoingPrice;
                     @endphp
-
                     <tr>
                         <td rowspan="2" style="line-height: 50px;" >{{ $loop->iteration }}</td>
                         <td rowspan="2" style="line-height: 50px;" > <strong>{{ $product->name }}</strong> </td> <!-- Span for incoming and outgoing rows -->
@@ -66,7 +69,6 @@
                             </div>
                         </td>
                     </tr>
-
                     <tr>
                         <td>Sent to Amazon UK</td>
                         <td>$ {{ $product->price }}</td>

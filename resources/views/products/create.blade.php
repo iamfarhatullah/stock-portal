@@ -16,15 +16,6 @@
                     </div>
                 </div>
                 <br>
-                <!-- <div class="row">
-                    <div class="col-md-2 col-sm-3">
-                        <label>Quantity *</label>
-                    </div>
-                    <div class="col-md-6 col-sm-7">
-                        <input type="number" class="form-field" value="{{ old('quantity') }}" name="quantity" placeholder="Enter product quantity">
-                    </div>
-                </div>
-                <br> -->
                 <input type="hidden" class="form-field" value="0" name="quantity" placeholder="Enter product quantity">
                 <div class="row">
                     <div class="col-md-2 col-sm-3">
@@ -34,16 +25,13 @@
                         <input type="number" step="0.01" class="form-control" value="{{ old('price') }}" name="price" placeholder="Enter landing price">
                     </div>
                 </div>
-                                
                 <hr>
                 <div class="row">
                     <div class="col-md-2 col-sm-3"></div>
                     <div class="col-md-6 col-sm-7">
 						<div class="pull-right">
-							<!-- <input type="reset" class="primary-btn" value="Reset"> -->
 							<button type="submit" class="success-btn">Save</button><br><br>
 						</div>
-						
 					</div>
 				</div>
             </form>

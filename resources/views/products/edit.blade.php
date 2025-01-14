@@ -17,16 +17,7 @@
                     </div>
                 </div>
                 <br>
-                <!-- <div class="row">
-                    <div class="col-md-2 col-sm-3">
-                        <label>Quantity *</label>
-                    </div>
-                    <div class="col-md-6 col-sm-7">
-                        <input type="number" class="form-field" value="{{ $product->quantity }}" name="quantity" placeholder="Enter product quantity">
-                    </div>
-                </div>
-                <br> -->
-                <input type="hidden" class="form-field" value="0" name="quantity" placeholder="Enter product quantity">
+                <input type="hidden" class="form-field" value="{{ $product->quantity }}" name="quantity" placeholder="Enter product quantity">
                 <div class="row">
                     <div class="col-md-2 col-sm-3">
                         <label>Landing Price *</label>
@@ -41,10 +32,8 @@
                     <div class="col-md-2 col-sm-3"></div>
                     <div class="col-md-6 col-sm-7">
 						<div class="pull-right">
-							<!-- <input type="reset" class="primary-btn" value="Reset"> -->
 							<button type="submit" class="success-btn">Update Product</button><br><br>
 						</div>
-						
 					</div>
 				</div>
             </form>
