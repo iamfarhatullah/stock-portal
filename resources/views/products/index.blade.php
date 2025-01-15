@@ -43,7 +43,7 @@
                 <td>
                     <div class="pull-right">
                         <span style="padding-right: 4px;"></span>
-                        <a href="{{ route('stocks.product-stock', $product->id) }}" class="primary-btn">Manage Stock</a>
+                        
                         <a href="{{ route('products.edit', $product) }}" class="primary-btn">Edit</a>
                     
                         <form action="{{ route('products.destroy', $product->id) }}" method="POST" style="display:inline;">

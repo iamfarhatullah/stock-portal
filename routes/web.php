@@ -27,10 +27,14 @@ Route::middleware('auth', 'preventBackHistory')->group(function () {
     Route::put('products/{product}', [ProductController::class, 'update'])->name('products.update');
     Route::delete('products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
     
-    Route::get('stocks', [StocksRecordController::class, 'index'])->name('stocks.index');
-    Route::get('stocks/{product}', [StocksRecordController::class, 'productstock'])->name('stocks.product-stock');
-    Route::get('stocks/{product}/create', [StocksRecordController::class, 'create'])->name('stocks.create');
-    Route::post('stocks/{product}', [StocksRecordController::class, 'store'])->name('stocks.store');
+    Route::get('stocks', [StocksRecordController::class, 'main_index'])->name('stocks.index');
+    Route::get('/stocks/stock_records', [StocksRecordController::class, 'index'])->name('stocks.stock_records.index');
+    Route::get('/stocks/stock_records/create', [StocksRecordController::class, 'create'])->name('stocks.stock_records.create');
+    Route::post('/stocks/stock_records', [StocksRecordController::class, 'store'])->name('stocks.stock_records.store');
+    Route::get('/stocks/stock_records/{id}/edit', [StocksRecordController::class, 'edit'])->name('stocks.stock_records.edit');
+    Route::put('/stocks/stock_records/{id}', [StocksRecordController::class, 'update'])->name('stocks.stock_records.update');
+    Route::delete('/stocks/stock_records/{id}', [StocksRecordController::class, 'destroy'])->name('stocks.stock_records.destroy');
+    
     
     Route::get('warehouse', [WarehouseController::class, 'index'])->name('warehouse.index');
     Route::get('warehouse/create', [WarehouseController::class, 'create'])->name('warehouse.create');

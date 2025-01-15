@@ -22,7 +22,7 @@
                         <label>Landing Price *</label>
                     </div>
                     <div class="col-md-6 col-sm-7">
-                        <input type="number" step="0.01" class="form-control" value="{{ old('price') }}" name="price" placeholder="Enter landing price">
+                        <input type="number" step="0.01" class="form-field" value="{{ old('price') }}" name="price" placeholder="Enter landing price">
                     </div>
                 </div>
                 <hr>

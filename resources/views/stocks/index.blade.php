@@ -7,6 +7,7 @@
             <h3 class="box-title">Stock Records
                 <span class="pull-right">
                     <!-- <a href="{{ route('reports.stock_report') }}" target="_blank" class="primary-btn"><i class="fas fa-print"></i></a> -->
+                    <a href="{{ route('stocks.stock_records.index') }}" class="primary-btn">Manage Stock</a>
                 </span>
             </h3>
         </div>
@@ -35,13 +36,12 @@
     <table id="search-stock-table" class="table">
         <thead>
             <tr>
-                <th style="width:5px">#</th>
+                <th style="width:12px">#</th>
                 <th>Product</th>
                 <th>Type</th>
                 <th>Landing Cost</th>
                 <th>Quantity</th>
                 <th>Total Cost</th>
-                <th style="width:150px">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -65,11 +65,6 @@
                 <td>$ {{ $product->price }}</td>
                 <td>{{ $incomingQuantity }}</td>
                 <td>$ {{ $incomingTotalPrice }}</td>
-                <td rowspan="2" style="line-height: 54px;">
-                    <div class="pull-right">
-                        <a href="{{ route('stocks.product-stock', $product->id) }}" class="primary-btn">Manage Stock</a>
-                    </div>
-                </td>
             </tr>
             <tr>
                 <td>Sent to Amazon UK</td>
@@ -84,10 +79,9 @@
                 <td><span class="pull-right"><strong>Available Stock</strong></span></td>
                 <td><strong>{{ $product->quantity }}</strong></td>
                 <td><strong>$ {{ $product->price * $product->quantity }}</strong></td>
-                <td></td>
             </tr>
             <tr>
-                <td colspan="7"></td>
+                <td colspan="6"></td>
             </tr>
         @endforeach
         </tbody>
