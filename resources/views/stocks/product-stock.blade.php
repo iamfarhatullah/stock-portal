@@ -13,29 +13,28 @@
 				    </div>
 			    </div>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    
-                </div>
-            </div>
             @if($stockRecords->isEmpty())
-                <div class="alert alert-info text-center">No Record found.</div>
+                <br><div>No Record found.</div><br>
             @else
             <table id="search-table" class="table table-striped table-hover">
                 <thead>
                 <tr>
+                    <th>#</th>
                     <th>Type</th>
-                    <th>Quantity</th>
                     <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total Cost</th>
                     <th>Date</th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach ($stockRecords as $record)
                     <tr>
+                        <td>{{ $loop->index+1 }}</td>
                         <td>{{ $record->type == 'incoming' ? "Recieved from China" : "Sent to Amazon UK" }}</td>
-                        <td>{{ $record->quantity }}</td>
                         <td>${{ $record->price }}</td>
+                        <td>{{ $record->quantity }}</td>
+                        <td>${{ $record->price * $record->quantity }}</td>
                         <td>{{ $record->created_at->format('Y-m-d H:i') }}</td>
                     </tr>
                 @endforeach

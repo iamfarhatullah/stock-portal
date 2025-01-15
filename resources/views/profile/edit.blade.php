@@ -2,9 +2,16 @@
 @extends('layouts.main')
 @section('title', 'Edit Profile')
 @section('content')
-
-@section('content')
-
+@if ($errors->updatePassword->any())
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <ul>
+            @foreach ($errors->updatePassword->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 <div class="row">
     <div class="col-md-9">
         <div class="form-wrapper">
@@ -61,6 +68,9 @@
                     </div>
                     <div class="col-md-6 col-sm-7">
                         <input class="form-field" name="current_password" type="password" placeholder="Enter current password"/>
+                        @error('current_password')
+                            <div class="error">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
                 <br>
@@ -70,6 +80,9 @@
                     </div>
                     <div class="col-md-6 col-sm-7">
                         <input class="form-field" name="password" type="password" placeholder="Enter new password"/>
+                        @error('password')
+                            <div class="error">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
                 <br>
@@ -79,10 +92,12 @@
                     </div>
                     <div class="col-md-6 col-sm-7">
                         <input class="form-field" name="password_confirmation" type="password" placeholder="Re-enter new password"/>
+                        @error('password_confirmation')
+                            <div class="text-red-500">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
                 <br>
-                
                 <hr>
                 <div class="row">
                     <div class="col-md-3 col-sm-3"></div>
@@ -96,6 +111,4 @@
         </div>
     </div>
 </div>
-
-
 @endsection

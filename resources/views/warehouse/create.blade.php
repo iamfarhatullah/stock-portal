@@ -12,7 +12,7 @@
                         <label>Description *</label>
                     </div>
                     <div class="col-md-6 col-sm-7">
-                        <input type="text" class="form-field" value="{{ old('description') }}" name="description" placeholder="Enter description">
+                        <textarea class="textarea-field" name="description" rows="5" placeholder="Enter description">{{ old('description') }}</textarea>
                     </div>
                 </div>
                 <br>

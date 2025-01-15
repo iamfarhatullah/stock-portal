@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WarehouseController;
 use App\Http\Controllers\ProcurementController;
+use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth', 'verified', 'preventBackHistory'])->group(function () {
@@ -31,7 +32,6 @@ Route::middleware('auth', 'preventBackHistory')->group(function () {
     Route::get('stocks/{product}/create', [StocksRecordController::class, 'create'])->name('stocks.create');
     Route::post('stocks/{product}', [StocksRecordController::class, 'store'])->name('stocks.store');
     
-    // List all warehouse records
     Route::get('warehouse', [WarehouseController::class, 'index'])->name('warehouse.index');
     Route::get('warehouse/create', [WarehouseController::class, 'create'])->name('warehouse.create');
     Route::post('warehouse', [WarehouseController::class, 'store'])->name('warehouse.store');
@@ -44,6 +44,8 @@ Route::middleware('auth', 'preventBackHistory')->group(function () {
     Route::get('sales', [SaleController::class, 'index'])->name('sales.index');
     Route::get('sales/create', [SaleController::class, 'create'])->name('sales.create');
     Route::post('sales', [SaleController::class, 'store'])->name('sales.store');
+
+    Route::get('/stock/report', [ReportController::class, 'generateStockReport'])->name('reports.stock_report');
 });
 
 require __DIR__.'/auth.php';

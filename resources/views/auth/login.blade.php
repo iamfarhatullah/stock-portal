@@ -14,7 +14,7 @@
     @csrf
     <label for="email">Email *</label>
     <input id="email" class="form-field" type="email" name="email" value="{{old('email')}}"  required placeholder="Enter email"/>
-    
+    <br><br>
     <label for="password1">Password *</label>
     <input id="password1" class="form-field" type="password" name="password" required placeholder="Enter password"/>
     <br>

@@ -25,8 +25,7 @@
                     <div class="col-md-6 col-sm-7">
                         <input type="number" step="0.01" class="form-control" value="{{ $product->price }}" name="price" placeholder="Enter landing price">
                     </div>
-                </div>
-                                
+                </div>            
                 <hr>
                 <div class="row">
                     <div class="col-md-2 col-sm-3"></div>

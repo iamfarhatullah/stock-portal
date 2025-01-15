@@ -13,7 +13,7 @@
 		</div>
     </div>
     @if ($warehouses->isEmpty())
-        <p>No records found.</p>
+        <br><div>No record found.</div><br>
     @else
         <table class="table table-striped table-hover">
             <thead>
@@ -23,7 +23,7 @@
                     <th>Cost</th>
                     <th>Units</th>
                     <th>Date</th>
-                    <th>Actions</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -31,18 +31,20 @@
                     <tr>
                         <td>{{ $loop->index + 1 }}</td>
                         <td>{{ $warehouse->description }}</td>
-                        <td>${{ $warehouse->cost }}</td>
+                        <td>$ {{ $warehouse->cost }}</td>
                         <td>{{ $warehouse->units }}</td>
                         <td>{{ $warehouse->date }}</td>
                         <td>
-                            <a href="{{ route('warehouse.edit', $warehouse) }}" class="primary-btn">Edit</a>
-                            <form action="{{ route('warehouse.destroy', $warehouse) }}" method="POST" style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="sm-danger-btn" onclick="return confirm('Are you sure you want to delete this record?')"> 
-                                    <i class="fas fa-trash"></i> 
-                                </button>
-                            </form>
+                            <span class="pull-right">
+                                <a href="{{ route('warehouse.edit', $warehouse) }}" class="primary-btn">Edit</a>
+                                <form action="{{ route('warehouse.destroy', $warehouse) }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="sm-danger-btn" onclick="return confirm('Are you sure you want to delete this record?')"> 
+                                        <i class="fas fa-trash"></i> 
+                                    </button>
+                                </form>
+                            </span>
                             <!-- <form action="{{ route('warehouse.destroy', $warehouse) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')

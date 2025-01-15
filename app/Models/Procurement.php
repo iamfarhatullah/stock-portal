@@ -8,11 +8,11 @@ class Procurement extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['product_id', 'date', 'paid_amount', 'units_ordered'];
+    protected $fillable = ['date', 'paid_amount', 'units_ordered'];
 
-    public function product()
+    public function details()
     {
-        return $this->belongsTo(Product::class);
+        return $this->hasMany(ProcurementDetails::class);
     }
 }
 
