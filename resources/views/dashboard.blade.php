@@ -17,7 +17,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <div style="width: 95%; margin: auto; text-align: center;">
+                    <div style="width: 98%; margin: auto; text-align: center;">
                         <canvas id="pieChart"></canvas>
                         <br>
                     </div>
@@ -26,6 +26,7 @@
         </div>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     const products = @json($products);
     const labels = products.map(product => product.name); 
@@ -85,4 +86,5 @@
         }
     });
 </script>
+
 @endsection

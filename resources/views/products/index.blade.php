@@ -15,50 +15,52 @@
     @if($products->isEmpty())
         <br><div>No record found.</div><br>
     @else
-    <table id="search-table" class="table table-striped table-hover">
-        <thead>
-            <tr>
-            <th style="width: 6%">#</th>
-            <th style="width: 20%">Name</th>
-            <th>Quantity</th>
-            <th>Landing Cost</th>
-            <th style=""></th>
-            </tr>
-        </thead>
-        <tbody>
-        @php
-            $totalQuantity = 0;
-            $grandTotal = 0;    
-        @endphp
-            @foreach ($products as $product)
+    <div class="table-responsive">
+        <table id="search-table" class="table table-striped table-hover">
+            <thead>
+                <tr>
+                <th style="width:16px">#</th>
+                <th style="width: 20%">Name</th>
+                <th>Quantity</th>
+                <th>Landing Cost</th>
+                <th style=""></th>
+                </tr>
+            </thead>
+            <tbody>
             @php
-                $totalQuantity += $product->quantity;
-                $grandTotal += $product->price * $product->quantity;
+                $totalQuantity = 0;
+                $grandTotal = 0;    
             @endphp
-            <tr>
-                <td>{{ $loop->iteration }}</td>
-                <td>{{ $product->name }}</td>
-                <td>{{ $product->quantity }}</td>
-                <td>$ {{ $product->price }}</td>
-                <td>
-                    <div class="pull-right">
-                        <span style="padding-right: 4px;"></span>
+                @foreach ($products as $product)
+                @php
+                    $totalQuantity += $product->quantity;
+                    $grandTotal += $product->price * $product->quantity;
+                @endphp
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $product->name }}</td>
+                    <td>{{ $product->quantity }}</td>
+                    <td>$ {{ $product->price }}</td>
+                    <td>
+                        <div class="pull-right">
+                            <span style="padding-right: 4px;"></span>
+                            
+                            <a href="{{ route('products.edit', $product) }}" class="primary-btn">Edit</a>
                         
-                        <a href="{{ route('products.edit', $product) }}" class="primary-btn">Edit</a>
-                    
-                        <form action="{{ route('products.destroy', $product->id) }}" method="POST" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="sm-danger-btn" onclick="return confirm('Are you sure you want to delete this product?')"> 
-                                <i class="fas fa-trash"></i> 
-                            </button>
-                        </form>
-                    </div>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+                            <form action="{{ route('products.destroy', $product->id) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="sm-danger-btn" onclick="return confirm('Are you sure you want to delete this product?')"> 
+                                    <i class="fas fa-trash"></i> 
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
     @endif
 </div>
 @endsection

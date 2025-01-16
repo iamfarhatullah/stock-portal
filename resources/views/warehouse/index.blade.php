@@ -15,10 +15,11 @@
     @if ($warehouses->isEmpty())
         <br><div>No record found.</div><br>
     @else
+    <div class="table-responsive">
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th style="width:16px">#</th>
                     <th>Description</th>
                     <th>Cost</th>
                     <th>Units</th>
@@ -45,16 +46,12 @@
                                     </button>
                                 </form>
                             </span>
-                            <!-- <form action="{{ route('warehouse.destroy', $warehouse) }}" method="POST" class="d-inline">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                            </form> -->
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
+    </div>
     @endif
 </div>
 @endsection

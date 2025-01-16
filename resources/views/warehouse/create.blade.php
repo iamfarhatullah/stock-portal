@@ -39,7 +39,7 @@
                         <label>Date *</label>
                     </div>
                     <div class="col-md-6 col-sm-7">
-                        <input type="date" class="form-field" name="date">
+                        <input type="date" class="form-field" name="date" placeholder="Select Date">
                     </div>
                 </div>
                 <hr>
