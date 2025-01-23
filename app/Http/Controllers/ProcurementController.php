@@ -26,28 +26,36 @@ class ProcurementController extends Controller
         $request->validate([
             'date' => 'required|date',
             'paid_amount' => 'required|numeric',
-            'units_ordered' => 'required|integer',
-            'product_ids' => 'required|array', // Products selected via checkboxes
+            'product_ids' => 'required|array',
+            'product_ids.*' => 'exists:products,id', 
         ]);
 
-        // Create the procurement record
+        foreach ($request->product_ids as $productId) {
+            $request->validate([
+                'quantities.' . $productId => 'required|integer|min:1',
+            ]);
+        }
+        $units_ordered = 0;
+        foreach($request->quantities as $quantity){
+            $units_ordered += $quantity;
+        }
+
         $procurement = Procurement::create([
             'date' => $request->date,
             'paid_amount' => $request->paid_amount,
-            'units_ordered' => $request->units_ordered,
+            'units_ordered' => $units_ordered,
         ]);
 
-        // Attach products to the procurement
         foreach ($request->product_ids as $productId) {
             ProcurementDetails::create([
                 'procurement_id' => $procurement->id,
                 'product_id' => $productId,
+                'quantity' => $request->quantities[$productId],
             ]);
         }
 
         return redirect()->route('procurements.index')->with('success', 'Procurement created successfully.');
     }
-
 
     public function edit($id)
     {
@@ -61,43 +69,45 @@ class ProcurementController extends Controller
         $request->validate([
             'date' => 'required|date',
             'paid_amount' => 'required|numeric',
-            'units_ordered' => 'required|integer',
             'product_ids' => 'required|array',
+            'product_ids.*' => 'exists:products,id',
         ]);
 
-        // Update procurement record
+        foreach ($request->product_ids as $productId) {
+            $request->validate([
+                'quantities.' . $productId => 'required|integer|min:1',
+            ]);
+        }
+        $units_ordered = 0;
+        foreach($request->quantities as $quantity){
+            $units_ordered += $quantity;
+        }
         $procurement = Procurement::findOrFail($id);
         $procurement->update([
             'date' => $request->date,
             'paid_amount' => $request->paid_amount,
-            'units_ordered' => $request->units_ordered,
+            'units_ordered' => $units_ordered,
         ]);
 
-        // Delete existing product relationships and reattach
         $procurement->details()->delete();
         foreach ($request->product_ids as $productId) {
             ProcurementDetails::create([
                 'procurement_id' => $procurement->id,
                 'product_id' => $productId,
+                'quantity' => $request->quantities[$productId],
             ]);
         }
-
         return redirect()->route('procurements.index')->with('success', 'Procurement updated successfully.');
     }
 
     public function destroy($id)
     {
         $procurement = Procurement::findOrFail($id);
-        
-        // Delete related procurement details first
         $procurement->details()->delete();
-        
-        // Now delete the procurement
         $procurement->delete();
 
         return redirect()->route('procurements.index')->with('success', 'Procurement deleted successfully.');
     }
-
 }
 
 

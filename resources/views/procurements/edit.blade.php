@@ -10,45 +10,61 @@
                 @method('PUT')
                 <div class="row">
                     <div class="col-md-2 col-sm-3">
-                        <label>Date *</label>
+                        <label for="date">Date *</label>
                     </div>
                     <div class="col-md-6 col-sm-7">
-                    <input type="date" name="date" class="form-field" value="{{ old('date', $procurement->date) }}">
+                        <input type="date" class="form-field" id="date" value="{{ old('date', $procurement->date) }}" name="date">
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-2 col-sm-3">
-                        <label>Paid Amount *</label>
+                        <label for="paid_amount">Paid Amount *</label>
                     </div>
                     <div class="col-md-6 col-sm-7">
-                        <input type="number" class="form-field" value="{{ old('paid_amount', $procurement->paid_amount) }}" step="0.01" name="paid_amount" placeholder="Enter paid amount">
+                        <input type="number" class="form-field" id="paid_amount" value="{{ old('paid_amount', $procurement->paid_amount) }}" step="0.01" name="paid_amount" placeholder="Enter paid amount">
                     </div>
                 </div>
                 <br>
-                <div class="row">
-                    <div class="col-md-2 col-sm-3">
-                        <label>Units Ordered *</label>
-                    </div>
-                    <div class="col-md-6 col-sm-7">
-                        <input type="number" class="form-field" value="{{ old('units_ordered', $procurement->units_ordered) }}" name="units_ordered" placeholder="Enter ordered units">
-                    </div>
-                </div>
-                <br>
+            
                 <div class="row">
                     <div class="col-md-2 col-sm-3">
                         <label>Select Products *</label>
                     </div>
                     <div class="col-md-6 col-sm-7">
-                    <div>
-                        @foreach ($products as $product)
-                            <label class="col-md-4 col-sm-4">
-                                <input type="checkbox" name="product_ids[]" value="{{ $product->id }}"
-                                {{ in_array($product->id, $procurement->details->pluck('product_id')->toArray()) ? 'checked' : '' }}>
-                                {{ $product->name }}
-                            </label>
-                        @endforeach
-                    </div>
+                        <div id="product-selection">
+                            @if($products->isEmpty())
+                                <span class="text-danger">No products found <br> Please add products first.</span>
+                            @else
+                                @foreach ($products as $product)
+                                @php
+                                    $productDetail = $procurement->details->firstWhere('product_id', $product->id);
+                                    $isChecked = $productDetail ? 'checked' : '';
+                                    $quantity = $productDetail ? $productDetail->quantity : '';
+                                @endphp
+                                <div class="product-item">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="product_{{ $product->id }}">
+                                                <input type="checkbox" id="product_{{ $product->id }}" name="product_ids[]" value="{{ $product->id }}" class="product-checkbox" {{ old('product_ids') && in_array($product->id, old('product_ids', [])) ? 'checked' : $isChecked }}>
+                                                {{ $product->name }}
+                                            </label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="number" 
+                                                   name="quantities[{{ $product->id }}]" 
+                                                   class="form-field product-quantity {{ old('product_ids') && in_array($product->id, old('product_ids', [])) || $isChecked ? '' : 'hidden' }}" 
+                                                   value="{{ old('quantities.' . $product->id, $quantity) }}" 
+                                                   placeholder="Enter quantity">
+                                            @error('quantities.' . $product->id)
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                            @endif
+                        </div>
                     </div>
                 </div>
                 <hr>
@@ -56,7 +72,7 @@
                     <div class="col-md-2 col-sm-3"></div>
                     <div class="col-md-6 col-sm-7">
                         <div class="pull-right">
-                            <button type="submit" class="success-btn">Update</button><br><br>
+                            <button type="submit" class="success-btn">Save</button><br><br>
                         </div>
                     </div>
                 </div>
@@ -64,4 +80,32 @@
         </div>
     </div>
 </div>
+
+<script>
+    // JavaScript to toggle quantity input based on checkbox selection
+    document.addEventListener('DOMContentLoaded', () => {
+        const productCheckboxes = document.querySelectorAll('.product-checkbox');
+
+        productCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', (event) => {
+                const quantityInput = event.target.closest('.product-item').querySelector('.product-quantity');
+                if (event.target.checked) {
+                    quantityInput.classList.remove('hidden');
+                } else {
+                    quantityInput.classList.add('hidden');
+                    quantityInput.value = ''; // Clear the value if the checkbox is unchecked
+                }
+            });
+        });
+    });
+</script>
+
+<style>
+    .hidden {
+        display: none;
+    }
+    .text-danger {
+        color: red;
+    }
+</style>
 @endsection

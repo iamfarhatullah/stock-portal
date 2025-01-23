@@ -22,8 +22,8 @@
                 <tr>
                     <th style="width:16px">#</th>
                     <th style="width: 30%;;">Products</th>
+                    <th>Ordered Units</th>
                     <th>Paid Amount</th>
-                    <th>Units Ordered</th>
                     <th>Date</th>
                     <th></th>
                 </tr>
@@ -34,11 +34,11 @@
                     <td>{{ $loop->index + 1}}</td>
                     <td>
                     @foreach ($procurement->details as $detail)
-                        <span class="custom-label">{{ $detail->product->name }}</span>
+                        <span class="custom-label">{{ $detail->product->name }} - ({{ $detail->quantity  }})</span>
                     @endforeach
                     </td>
-                    <td>{{ $procurement->paid_amount }}</td>
                     <td>{{ $procurement->units_ordered }}</td>
+                    <td>{{ $procurement->paid_amount }}</td>
                     <td>{{ $procurement->date }}</td>
                     <td>
                         <span class="pull-right">

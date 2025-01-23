@@ -8,7 +8,7 @@ class ProcurementDetails extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['procurement_id', 'product_id'];
+    protected $fillable = ['procurement_id', 'product_id', 'quantity'];
 
     public function procurement()
     {
