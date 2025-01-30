@@ -40,7 +40,7 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $product->name }}</td>
                     <td>{{ $product->quantity }}</td>
-                    <td>$ {{ $product->price }}</td>
+                    <td>&pound; {{ $product->price }}</td>
                     <td>
                         <div class="pull-right">
                             <span style="padding-right: 4px;"></span>

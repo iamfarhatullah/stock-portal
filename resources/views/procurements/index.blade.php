@@ -38,7 +38,7 @@
                     @endforeach
                     </td>
                     <td>{{ $procurement->units_ordered }}</td>
-                    <td>{{ $procurement->paid_amount }}</td>
+                    <td>&pound; {{ $procurement->paid_amount }}</td>
                     <td>{{ $procurement->date }}</td>
                     <td>
                         <span class="pull-right">

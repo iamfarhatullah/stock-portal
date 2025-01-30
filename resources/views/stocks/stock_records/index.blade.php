@@ -39,7 +39,7 @@
                         <td>{{ $loop->index+1 }}</td>
                         <td>{{ $record->product->name }}</td>
                         <td>{{ $movement_type }} </td>
-                        <td>$ {{ $record->price }}</td>
+                        <td>&pound; {{ $record->price }}</td>
                         <td>{{ $record->quantity }}</td>
                         <td>{{ $record->created_at }}</td>
                         <td>

@@ -21,8 +21,9 @@
                 <tr>
                     <th style="width:16px">#</th>
                     <th>Description</th>
-                    <th>Cost</th>
+                    <th>Products</th>
                     <th>Units</th>
+                    <th>Shipment Charges</th>
                     <th>Date</th>
                     <th></th>
                 </tr>
@@ -32,8 +33,13 @@
                     <tr>
                         <td>{{ $loop->index + 1 }}</td>
                         <td>{{ $warehouse->description }}</td>
-                        <td>$ {{ $warehouse->cost }}</td>
+                        <td>
+                        @foreach ($warehouse->details as $detail)
+                            <span class="custom-label">{{ $detail->product->name }} - ({{ $detail->quantity  }})</span>
+                        @endforeach
+                        </td>
                         <td>{{ $warehouse->units }}</td>
+                        <td>&pound; {{ $warehouse->cost }}</td>
                         <td>{{ $warehouse->date }}</td>
                         <td>
                             <span class="pull-right">

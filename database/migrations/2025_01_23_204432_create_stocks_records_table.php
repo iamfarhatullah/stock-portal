@@ -17,6 +17,7 @@ return new class extends Migration
             $table->enum('type', ['incoming', 'outgoing']);
             $table->integer('quantity');
             $table->decimal('price', 8, 2);
+            $table->foreignId('warehouse_id')->nullable()->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

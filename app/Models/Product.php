@@ -10,6 +10,12 @@ class Product extends Model
 
     protected $fillable = ['name', 'quantity', 'price'];
 
+    
+    public function warehouseDetails()
+    {
+        return $this->hasMany(WarehouseDetail::class);
+    }
+
     public function stockRecords()
     {
         return $this->hasMany(StocksRecord::class);

@@ -24,12 +24,6 @@
 					<span class="to-hide">Stock <i class="fa fa-angle-right pull-right angle-icon"></i></span>
 				</a>	        	
 			</div>
-			<div data-toggle="tooltip" data-placement="right" title="Products">
-				<a href="{{route('products.index')}}">
-					<i class="fas fa-cube"></i>
-					<span class="to-hide">Products <i class="fa fa-angle-right pull-right angle-icon"></i></span>
-				</a>	        	
-			</div>
 			<div data-toggle="tooltip" data-placement="right" title="Procurement">
 				<a href="{{route('procurements.index')}}">
 					<i class="fas fa-cart-plus"></i>
@@ -48,7 +42,12 @@
 					<span class="to-hide">Sales <i class="fa fa-angle-right pull-right angle-icon"></i></span>
 				</a>	        	
 			</div> -->
-			
+			<div data-toggle="tooltip" data-placement="right" title="Products">
+				<a href="{{route('products.index')}}">
+					<i class="fas fa-cube"></i>
+					<span class="to-hide">Products <i class="fa fa-angle-right pull-right angle-icon"></i></span>
+				</a>	        	
+			</div>
 			
 			<div data-toggle="tooltip" data-placement="right" title="Profile">
 				<a href="{{route('profile.index')}}">

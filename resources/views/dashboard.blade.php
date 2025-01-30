@@ -27,6 +27,7 @@
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 <script>
     const products = @json($products);
     const labels = products.map(product => product.name); 
@@ -52,6 +53,9 @@
         'rgba(100, 200, 255, 1)',
         'rgba(200, 100, 150, 1)'
     ];
+    
+    Chart.register(ChartDataLabels);
+
     new Chart(ctx, {
         type: 'bar',
         data: {
@@ -68,7 +72,7 @@
             responsive: true,
             plugins: {
                 legend: {
-                    position: 'none',
+                    display: false
                 },
                 datalabels: {
                     anchor: 'end',
@@ -79,12 +83,16 @@
                     },
                     color: '#000',
                     formatter: function(value) {
-                        return value;
+                        return value;  // Display quantity on top of bars
                     }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true
                 }
             }
         }
     });
 </script>
-
 @endsection

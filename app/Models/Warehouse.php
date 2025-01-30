@@ -17,6 +17,18 @@ class Warehouse extends Model
         'description',
         'cost',
         'units',
-        'date', // Add this if you're sending the CSRF token with your form.
+        'warehouse_id',
+        'date', 
     ];
+
+    public function details()
+    {
+        return $this->hasMany(WarehouseDetail::class);
+    }
+
+
+    // public function stockRecords()
+    // {
+    //     return $this->hasMany(StocksRecord::class);
+    // }
 }
