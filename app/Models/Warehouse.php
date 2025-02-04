@@ -8,16 +8,10 @@ class Warehouse extends Model
 {
     use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
         'description',
         'cost',
         'units',
-        'warehouse_id',
         'date', 
     ];
 
@@ -25,10 +19,4 @@ class Warehouse extends Model
     {
         return $this->hasMany(WarehouseDetail::class);
     }
-
-
-    // public function stockRecords()
-    // {
-    //     return $this->hasMany(StocksRecord::class);
-    // }
 }

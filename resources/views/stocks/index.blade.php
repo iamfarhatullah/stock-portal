@@ -29,7 +29,7 @@
                     <th style="width:16px">#</th>
                     <th>Product</th>
                     <th>Type</th>
-                    <th>Landing Cost</th>
+                    <!-- <th>Landing Cost</th> -->
                     <th>Quantity</th>
                     <th>Total Cost</th>
                 </tr>
@@ -52,18 +52,18 @@
                     <td rowspan="2" style="line-height: 50px;" >{{ $loop->iteration }}</td>
                     <td rowspan="2" style="line-height: 50px;" > <strong>{{ $product->name }}</strong> </td> <!-- Span for incoming and outgoing rows -->
                     <td>Recieved from China</td>
-                    <td>&pound; {{ $product->price }}</td>
+                    <!-- <td>&pound; {{ $product->price }}</td> -->
                     <td>{{ $incomingQuantity }}</td>
                     <td>&pound; {{ $incomingTotalPrice }}</td>
                 </tr>
                 <tr>
                     <td>Sent to Amazon UK</td>
-                    <td>&pound; {{ $product->price }}</td>
+                    <!-- <td>&pound; {{ $product->price }}</td> -->
                     <td>{{ $outgoingQuantity }}</td>
                     <td>&pound; {{ $outgoingTotalPrice }}</td>
                 </tr>
                 <tr style="background-color: #F8F8F8">
-                    <td></td>
+                    <!-- <td></td> -->
                     <td></td>
                     <td></td>
                     <td><span class="pull-right"><strong>Available Stock</strong></span></td>
