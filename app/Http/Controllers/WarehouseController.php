@@ -125,16 +125,9 @@ class WarehouseController extends Controller
         return redirect()->route('warehouse.index')->with('message', 'Warehouse record updated successfully!');
     }
 
-
-
-
-
     public function destroy(Warehouse $warehouse)
     {
-        // Delete warehouse and its related stock records
-        StocksRecord::where('warehouse_id', $warehouse->id)->delete();
         $warehouse->delete();
-
         return redirect()->route('warehouse.index')->with('message', 'Warehouse record deleted successfully!');
     }
 }
